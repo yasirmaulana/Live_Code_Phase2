@@ -3,56 +3,13 @@
     color="black"
     height="90px"
     >
-    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-    <!-- <v-toolbar-title>
-      <router-link to="/">
-        <img src="https://storage.googleapis.com/happygram/craftlogo.png" alt="logo" 
-            style="height:60px">
-      </router-link>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
-    <div> -->
-      <!-- <v-toolbar-items> -->
-      <!-- <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>
-          <router-link to="/cart">
-            <v-badge left>
-              <span slot="badge">{{cart.items.length}}</span>
-              <v-icon large color="grey lighten-1">shopping_cart</v-icon>
-            </v-badge>
-          </router-link>
-        </v-btn> -->
-        <!-- <router-link to="/">
-          <v-btn color="red" class="warning elevation-9" @click="logout" v-if="statusLogout">
-            sign out
-          </v-btn>
-        </router-link>
-        <router-link to="/signup" v-if="statusLogin">
-          <v-btn flat style="color:white">
-            sign up
-          </v-btn>
-        </router-link>
-        <router-link to="/login">
-          <v-btn color="green" class="success elevation-9" v-if="statusLogin">
-            sign in
-          </v-btn>
-        </router-link> -->
-      </v-toolbar-items>
-    <!-- {{statusLogout}} -->
-    </div>
+<button type="button" class="btn btn-success elevation-9">
+<router-link to="/login">
+
+  Login
+</router-link>
+</button>
+<!-- <button type="button" class="btn btn-success elevation-9">Upload</button> -->
     
   </v-toolbar>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-
-export default {
-  computed: {
-    ...mapState([
-      'items',
-      'cart'
-    ])
-  }  
-}
-</script>

@@ -36,52 +36,34 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import axios from 'axios'
+
+const $http = 'http://35.197.135.159/'
 
 export default {
-  computed: {
-    ...mapState([
-      'items',
-      'cart'
-    ])
-  },
-  
-  filters: {
-    currency: function(value) {
-      var formatter = Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'IDR',
-          minimumFractionDigits: 0
-      })
-      return formatter.format(value)
-    }
-  },
 
   methods: {
-    buy: function(item) {
-      var cartItem = this.getCartItem(item)
+    getPicture: function () {
+      let url = $http + 'image'
 
-      if(cartItem != null) {
-        cartItem.quantity++
-      } else {
-        let objItem = {
-          name: item.name,
-          price: item.price,
-          quantity: 1
-        }
-        this.$store.dispatch('buyItem', objItem)
-      }
-      item.stock--
-    },
+      axios
+        .get(url, {
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
+        .then(response => {
+          console.log('berhasil:',response)
+        })
+        .catch(error => {
+          console.log('ini kenapa ya????',error)
+        })
 
-    getCartItem: function(item) {
-      for(var i = 0; i < this.cart.items.length; i++) {
-        if(this.cart.items[i].id === item.id) {
-          return this.cart.items[i]
         }
-        return null
-      }
-    }
+  },
+
+  mounted: {
+    // this.getPicture()
   }
 }
 </script>
