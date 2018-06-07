@@ -2,7 +2,7 @@
   <!-- <div> -->
     <v-layout style="margin:15px">
       <v-flex
-          v-for="(item,index) in items"
+          v-for="(item,index) in data"
           v-bind:key="index"
           xs12
           sm6
@@ -26,7 +26,6 @@
             <div :class="{ few: item.stock < 10, none: item.stock == 0}">
               Stock: {{item.stock}}
             </div>
-            <button class="btn btn-success" @click="buy(item)" :disabled="item.stock == 0">Buy</button>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -41,6 +40,11 @@ import axios from 'axios'
 const $http = 'http://35.197.135.159/'
 
 export default {
+  data () {
+    return {
+      data: ''
+    }
+  },
 
   methods: {
     getPicture: function () {
@@ -54,12 +58,13 @@ export default {
         })
         .then(response => {
           console.log('berhasil:',response)
+          this.data = response
         })
         .catch(error => {
           console.log('ini kenapa ya????',error)
         })
 
-        }
+    }
   },
 
   mounted: {
